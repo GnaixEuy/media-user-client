@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_tiktok/generated/common_response.dart';
 import 'package:flutter_tiktok/model/brand_rank_model.dart';
 import 'package:flutter_tiktok/model/city_item_model.dart';
@@ -43,6 +44,10 @@ class Api {
     FormData formData = FormData.fromMap(map);
     var result = await HttpManager.getInstance()
         .post(url: HttpConstant.login, cancelTokenTag: 'login', data: formData);
+    if (result == null) {
+      EasyLoading.showToast('密码错误或账户被锁定');
+    }
+
     return LoginResponse().fromJson(result);
   }
 
@@ -162,7 +167,7 @@ class Api {
   static Future<FeedListResponse> getFriendFeedList(
       int cursor, int count) async {
     var result = await HttpManager.getInstance().get(
-      url: HttpConstant.friendFeedList + '?cursor=$cursor&count=$count',
+      url: HttpConstant.friendFeedList + '/$cursor/$count',
       cancelTokenTag: 'getFriendFeedList',
     );
     return FeedListResponse().fromJson(result);

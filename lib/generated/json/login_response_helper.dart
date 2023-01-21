@@ -1,6 +1,9 @@
 import 'package:flutter_tiktok/model/response/login_response.dart';
 
 loginResponseFromJson(LoginResponse data, Map<String, dynamic> json) {
+  if (json['code'] != null) {
+    data.code = json['code'].toString();
+  }
   if (json['id'] != null) {
     data.id = json['id'].toString();
   }

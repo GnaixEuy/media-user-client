@@ -1,6 +1,6 @@
 class HttpConstant {
   // static const String baseUrl = 'https://api.fuiboom.com';
-  static const String baseUrl = 'http://192.168.31.235:16666';
+  static const String baseUrl = 'http://192.168.1.5:16666';
 
   ///登录
   static const login = '/api/uaa/oauth/token';

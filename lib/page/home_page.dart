@@ -2,10 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_tiktok/common/application.dart';
-import 'package:flutter_tiktok/common/router_manager.dart';
 import 'package:flutter_tiktok/controller/main_page_scroll_controller.dart';
-import 'package:flutter_tiktok/event/stop_play_event.dart';
 import 'package:flutter_tiktok/page/home_tab_focus_page.dart';
 import 'package:flutter_tiktok/page/home_tab_recommend_page.dart';
 import 'package:flutter_tiktok/res/colors.dart';
@@ -107,12 +104,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Container(
             margin: EdgeInsets.only(right: 10),
             child: InkWell(
-                onTap: () {
-                  Application.eventBus.fire(StopPlayEvent());
-                  Get.toNamed(Routers.search);
-                },
-                child: Image.asset('assets/images/search.webp',
-                    width: 35, height: 35, color: ColorRes.color_2)),
+              // onTap: () {
+              //   Application.eventBus.fire(StopPlayEvent());
+              //   Get.toNamed(Routers.search);
+              // },
+              // child: Image.asset('assets/images/search.webp',
+              //     width: 35, height: 35, color: ColorRes.color_2)),
+              child: SizedBox(
+                height: 35,
+                width: 55,
+              ),
+            ),
           ),
         ],
       ),
